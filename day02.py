@@ -39,7 +39,7 @@ for report in processed_input:
     else:
         reports_for_dampener.append(report)
 
-print("Safe reports found: ", num_of_safe_reports)
+print("Part 1 answer: ", num_of_safe_reports)
 
 # Part 2
 
@@ -47,4 +47,4 @@ for report in reports_for_dampener:
     if problem_dampener_test(report):
         num_of_safe_reports += 1
 
-print("Safe reports found (with Dampener): ", num_of_safe_reports)
+print("Part 2 answer: ", num_of_safe_reports)

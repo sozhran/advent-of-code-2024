@@ -2,7 +2,7 @@
 
 # Preparation
 
-import re
+from re import search, findall
 
 with open('./inputs/day03.txt', 'r') as file:
     input = file.read()
@@ -12,13 +12,13 @@ def match_finder(data: str):
 
     regexp_for_instructions = r"mul\([0-9]+,{1}[0-9]+\)"
 
-    list_of_matches = re.findall(regexp_for_instructions, data)
+    list_of_matches = findall(regexp_for_instructions, data)
 
     for instruction in list_of_matches:
         reg1 = r"(?<=mul\()[0-9]+(?=,)"
         reg2 = r"(?<=,)[0-9]+(?=\))"
-        a = re.search(reg1, instruction).group()
-        b = re.search(reg2, instruction).group()
+        a = search(reg1, instruction).group()
+        b = search(reg2, instruction).group()
 
         final_result += (int(a) * int(b))
     
@@ -26,7 +26,7 @@ def match_finder(data: str):
 
 # Part 1
 
-print("Result: ", match_finder(input))
+print("Part 1 answer: ", match_finder(input))
 
 # Part 2
 # There's a truly beautiful solution on Reddit which I accidentially spoiled for myself,
@@ -36,7 +36,7 @@ corrected_input = input.split('do()')
 corrected_result = 0
 
 for item in corrected_input:
-    new = item.split("don't()")
-    corrected_result += match_finder(new[0])
+    enabled_part = item.split("don't()", 1)[0]
+    corrected_result += match_finder(enabled_part)
 
-print(corrected_result)
+print("Part 2 answer: ", corrected_result)

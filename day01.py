@@ -24,7 +24,7 @@ column2.sort()
 for i in range(len(column1)):
     distance += (abs(column1[i] - column2[i]))
 
-print("Distance: ", distance)
+print("Part 1 answer: ", distance)
 
 # Part 2
 
@@ -35,4 +35,4 @@ similarity_score = 0
 for item in column1_occurences.keys():
     similarity_score += int(item) * column1_occurences[item] * column2_occurences[item]
 
-print("Similarity score: ", similarity_score)
+print("Part 2 answer: ", similarity_score)
